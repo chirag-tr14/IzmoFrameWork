@@ -16,7 +16,7 @@ public class Helper
 
 		File src = ts.getScreenshotAs(OutputType.FILE);
 
-		String destination = "F:\\TNR\\frameworkworkspace\\com.izmoweb.com\\Screenshots\\" + screenshotName
+		String destination = "C:\\Users\\rajesh.n\\git\\IzmoFrameWork\\Screenshots\\" + screenshotName
 				+ System.currentTimeMillis() + ".png";
 
 		try {

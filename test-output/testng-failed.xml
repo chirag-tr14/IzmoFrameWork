@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [PriceRule]">
+  <test thread-count="5" name="AddPriceRule(failed)">
     <classes>
       <class name="price.rule.testcase.FrontEndCitroenDealerPriceRule">
         <methods>
@@ -12,5 +12,5 @@
         </methods>
       </class> <!-- price.rule.testcase.FrontEndCitroenDealerPriceRule -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- AddPriceRule(failed) -->
+</suite> <!-- Failed suite [PriceRule] -->

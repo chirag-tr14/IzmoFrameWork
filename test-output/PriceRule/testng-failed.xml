@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [PriceRule]">
-  <test name="AddPriceRule(failed)">
+  <test thread-count="5" name="AddPriceRule(failed)">
     <classes>
-      <class name="price.rule.testcase.AddingpriceRuleDlrWithReport">
+      <class name="price.rule.testcase.FrontEndCitroenDealerPriceRule">
         <methods>
-          <include name="tearDown1"/>
-          <include name="setUp1"/>
-          <include name="greenDiscount"/>
+          <include name="closeBrowser"/>
+          <include name="citroenpriceRuleDlr"/>
+          <include name="withPriceRule"/>
+          <include name="frontendReports"/>
         </methods>
-      </class> <!-- price.rule.testcase.AddingpriceRuleDlrWithReport -->
+      </class> <!-- price.rule.testcase.FrontEndCitroenDealerPriceRule -->
     </classes>
   </test> <!-- AddPriceRule(failed) -->
 </suite> <!-- Failed suite [PriceRule] -->

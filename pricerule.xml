@@ -4,8 +4,8 @@
   <test name="AddPriceRule">
     <classes>
     <class name="price.rule.testcase.AddingpriceRuleDlrWithReport"/>
-     <class name="price.rule.testcase.FrontEndRenaultDealerPriceRule"/>
      <class name="price.rule.testcase.FrontEndCitroenDealerPriceRule"/>
+     <class name="price.rule.testcase.FrontEndRenaultDealerPriceRule"/>
       
     </classes>
   </test> <!-- AddPriceRule -->
