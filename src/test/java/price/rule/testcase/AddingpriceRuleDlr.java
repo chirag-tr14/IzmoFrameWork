@@ -29,7 +29,7 @@ public class AddingpriceRuleDlr
 	public void reports() {
 		report =ExtentReporterNG.getInstance();
 				//ExtentReports(".\\Reports\\BackendPriceRuleAdd.html", true);
-	}
+			}
 
 	@Test(priority = 1)
 	public void loginSc() {
