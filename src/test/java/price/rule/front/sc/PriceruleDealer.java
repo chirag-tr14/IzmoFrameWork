@@ -1,12 +1,19 @@
 package price.rule.front.sc;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.database.Database;
 
 import factory.DataproviderFactory;
 
@@ -22,7 +29,7 @@ public class PriceruleDealer
 	@FindBy(xpath = "//a[text()='Inventory Management']")
 	WebElement ivntMgmt;
 
-	@FindBy(xpath = "//a[text()='Manage Price Rules']")
+	@FindBy(xpath = "//a[@id='sd3'][text()='Manage Price Rules']")
 	WebElement priceRule;
 
 	@FindBy(xpath = "//a[text()='Add Inventory Rule']")
@@ -49,7 +56,10 @@ public class PriceruleDealer
 	WebElement ILocation;
 
 	@FindBy(xpath = "//input[@id='startDate']/..//img[@class='ui-datepicker-trigger']")
-	WebElement Dateicon;
+	WebElement StartDateicon;
+
+	@FindBy(xpath = "//input[@id='endDate']/..//img[@class='ui-datepicker-trigger']")
+	WebElement EndDateicon;
 
 	@FindBy(xpath = "//input[@id='startDate']")
 	WebElement StartDate;
@@ -60,8 +70,11 @@ public class PriceruleDealer
 	@FindBy(xpath = "//input[@name='discountValue']")
 	WebElement Discountvalue;
 
-	@FindBy(xpath = "//input[@name='submit']")
+	@FindBy(xpath = "//input[@name='submit'][@type='submit']")
 	WebElement UpdateButton;
+
+	@FindBy(xpath = "//input[@value='Save'][@type='submit']")
+	WebElement Save;
 
 	@FindBy(xpath = "//select[@id='make']")
 	WebElement Make;
@@ -72,15 +85,19 @@ public class PriceruleDealer
 	@FindBy(css = "#trim")
 	WebElement Trim;
 
-	@FindBy(xpath = "//input[@id='endDate']")
+	@FindBy(xpath = "//input[@id='endDate'][@name='endDate']")
 	WebElement EndDate;
+
+	@FindBy(xpath = "//span[text()='Prev']")
+	WebElement PrevMonth;
+
+	@FindBy(xpath = "//a[text()='8']")
+	WebElement SelecDate;
 
 	@FindBy(css = "#overrideCustom")
 	WebElement CustomChekBox;
 
-	@FindBy(css = "a[href$='RuleId=714']>img")
-	WebElement PriceRuleEditButton;
-
+	
 	@FindBy(xpath = "//a[@href='javascript:confirmDelete(717)']//img[@title='Delete']")
 	WebElement PriceRuleDeleteButton;
 
@@ -102,57 +119,51 @@ public class PriceruleDealer
 
 	public void expiredPriceRule() {
 
-		ivntMgmt.click();
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions
+				.visibilityOfAllElementsLocatedBy(By.xpath("//input[@id='endDate'][@name='endDate']")));
+		EndDateicon.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		priceRule.click();
+		PrevMonth.click();
+		SelecDate.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		PriceRuleEditButton.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		EndDate.sendKeys("28/03/2018");
-
-		// sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 4, 9));
-		// System.out.println(EndDate);
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		Select status = new Select(Status);
+		status.getFirstSelectedOption();
 		UpdateButton.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		InExTab.click();
 	}
 
 	public void inactivePriceRule() {
-		ivntMgmt.click();
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		priceRule.click();
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		/*//PriceRuleEditButton.click();
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		// EndDate.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 4,
-		// 9));
-		//System.out.println(EndDate);
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
 		Select status = new Select(Status);
 		status.selectByValue("ICTV");
 		UpdateButton.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);*/
-
-		/*
-		 * Actions act=new Actions(driver);
-		 * act.moveToElement(InExTab).build().perform();
-		 */
-
-		//InExTab.click();
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		InExTab.click();
 
 	}
 
-	public void deletePriceRule() {
+	public void deletePriceRule() throws ClassNotFoundException, SQLException {
+		Database databse = new Database();
+		String Query = "select *from inventory_price_rules  where level='DLR' and fk_dealer_id=102878 "
+		 		+ " and  discount_by='FLAT'  and status='ACTV'; ";
+			ResultSet data = databse.getData(Query);
+			boolean firstData = data.next();
+			 String ID = "";
+			if (firstData) {
+				ID = data.getString(1);
+				System.out.println(ID);
+			}
+	
 		ivntMgmt.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		priceRule.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//a[contains(@href,'javascript:confirmDelete'+'(ID)']//img[@title='Delete']")).click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		PriceRuleDeleteButton.click();
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
 		Alert alert = driver.switchTo().alert();
 		alert.accept();
 	}
