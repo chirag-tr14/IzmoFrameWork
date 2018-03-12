@@ -34,7 +34,7 @@ public class InventoryForm {
 		SubmitButton.click();
 
 		PrDropdown.click();
-
+		
 	}
 
 	public void otherValue() {
