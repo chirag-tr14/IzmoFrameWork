@@ -6,31 +6,34 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
 import factory.BrowserFactory;
 import factory.DataproviderFactory;
 import price.rule.front.sc.Login;
 import price.rule.front.sc.PriceruleDealer;
 import utility.Helper;
 
-public class AddingpriceRuleDlrWithReport
+public class AddingpriceRuleDlrOLD
 
 {
 	WebDriver driver;
 	ExtentReports report;
 	ExtentTest logger;
 
+	String Expatected = "https:/hkg,ghl,hj/qadealeradminv2fr.izmocars.com/inventoryPriceRulesList.htm?successMsg=inventory_price_rules_saved";
 
-	@BeforeClass
-	public void reports() {
-		report = new ExtentReports(".\\Reports\\PriceRuleAdd.html", true);
-	}
+	/*
+	 * @BeforeClass public void extentsReport { report =new
+	 * ExtentReports(".\\Reports\\PriceRuleAdd.html",true);
+	 * 
+	 * }
+	 */
 
 	@BeforeMethod
 	public void setUp1() {
@@ -39,7 +42,7 @@ public class AddingpriceRuleDlrWithReport
 		driver.manage().deleteAllCookies();
 		driver.get(DataproviderFactory.getConfig().applicationUrl());
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		logger = report.startTest("Login SC");
+			logger = report.startTest("Login SC");
 		logger.log(LogStatus.INFO, "Application is up and running");
 		logger.log(LogStatus.INFO, "Welcome to site Admin");
 
@@ -69,7 +72,8 @@ public class AddingpriceRuleDlrWithReport
 		logger.log(LogStatus.INFO,
 				logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFullyAdded Trade in Discount")));
 
-		System.out.println();
+		String Actual = driver.getCurrentUrl();
+		Assert.assertEquals(Actual, Expatected);
 
 	}
 
@@ -81,6 +85,7 @@ public class AddingpriceRuleDlrWithReport
 		PriceruleDealer Invt = PageFactory.initElements(driver, PriceruleDealer.class);
 		login.loginApplication(DataproviderFactory.getExcel().getData("Sheet1", 1, 0),
 				DataproviderFactory.getExcel().getData("Sheet1", 1, 1));
+
 		logger = report.startTest("Adding OEM Discount");
 
 		String title = login.getApplicationTitile();
@@ -103,6 +108,11 @@ public class AddingpriceRuleDlrWithReport
 
 		logger.log(LogStatus.INFO,
 				logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFullyAdded Oem Discount")));
+
+		String Actual = driver.getCurrentUrl();
+		Assert.assertEquals(Actual, Expatected);
+
+		logger.log(LogStatus.FAIL, "Getting Application Title");
 
 	}
 
@@ -143,7 +153,11 @@ public class AddingpriceRuleDlrWithReport
 
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
-		driver.get(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
+		// driver.get(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
+		String Actual = driver.getCurrentUrl();
+		Assert.assertEquals(Actual, Expatected);
+
+		logger.log(LogStatus.FAIL, "Getting Application Title");
 
 	}
 
@@ -178,7 +192,13 @@ public class AddingpriceRuleDlrWithReport
 		logger.log(LogStatus.INFO,
 				logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFully Added Dealer Discount")));
 
-		driver.get(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
+		// driver.get(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
+
+		String Actual = driver.getCurrentUrl();
+		System.out.println(Actual);
+		Assert.assertEquals(Actual, Expatected);
+
+		logger.log(LogStatus.FAIL, "Getting Application Title");
 
 	}
 
