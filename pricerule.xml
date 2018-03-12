@@ -7,7 +7,7 @@
      <class name="price.rule.testcase.FrontEndCitroenDealerPriceRule"/>
      <class name="price.rule.testcase.FrontEndRenaultDealerPriceRule"/>
      <class name="price.rule.testcase.ExpiredpriceRule"/>
-      <class name="price.rule.testcase.FrontEndInActivePriceRule"/>
+     <class name="price.rule.testcase.FrontEndInActivePriceRule"/>
      
     </classes>
   </test> <!-- AddPriceRule -->
