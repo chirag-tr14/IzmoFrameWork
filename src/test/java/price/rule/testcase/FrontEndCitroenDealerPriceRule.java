@@ -14,6 +14,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import factory.BrowserFactory;
 import factory.DataproviderFactory;
 import price.rule.front.sc.InventoryForm;
+import utility.ExtentReporterNG;
 import utility.Helper;
 
 public class FrontEndCitroenDealerPriceRule {
@@ -24,14 +25,14 @@ public class FrontEndCitroenDealerPriceRule {
 
 	@BeforeClass
 	public void frontendReports() {
-		report1 = new ExtentReports(".\\Reports\\FrontEndPriceRuleCitroen.html", true);
-		//report=ExtentReporterNG.getInstance();
-	}
+		report1 =ExtentReporterNG.getInstance();
+				//ExtentReports(".\\Reports\\FrontEndPriceRuleCitroen.html", true);
+			}
 
 	@BeforeMethod
 	public void citroenpriceRuleDlr() {
 
-		logger1 = report1.startTest("This page Verifies Fron end Citroen Dealer Price Rule");
+		logger1 = report1.startTest("Navigate to Citroen Dealer New Inventory Page");
 		driver = BrowserFactory.getBrowser("chrome");
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
 		driver.manage().deleteAllCookies();
@@ -40,14 +41,13 @@ public class FrontEndCitroenDealerPriceRule {
 
 	}
 
-	@Test(priority = 5)
+	@Test(priority=6)
 	public void withPriceRule() {
 		logger1 = report1.startTest("Price Rule is applied for Citroen Dealer");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
 
 		form.citroenpriceRuleValue();
 		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
-
 		logger1.log(LogStatus.INFO, "Calling priceRuleMethod");
 
 		// WebElement price =
@@ -57,12 +57,6 @@ public class FrontEndCitroenDealerPriceRule {
 
 		logger1.log(LogStatus.INFO, logger1
 				.addScreenCapture(Helper.captureScreenshot(driver, "Sucessfully Captured Price Value in Front End")));
-
-		// String actual = "Aide à la reprise (p) : 6 000 €";
-		// String Expected="price.getText";
-
-		// Assert.assertEquals(actual, price.getText());
-
 		logger1.log(LogStatus.PASS, "Price rule value is  captured for respective  vehicles");
 
 	}
