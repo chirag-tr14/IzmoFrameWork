@@ -87,5 +87,14 @@ public class InventoryForm {
 		PrDropdown.click();
 
 	}
+	
+	public void withousIsPrimary()
+	{
+		SearchField.sendKeys(DataproviderFactory.getExcel().getData("Sheet4", 7, 1));
+
+		SubmitButton.click();
+
+		//PrDropdown.click();
+	}
 
 }

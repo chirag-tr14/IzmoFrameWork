@@ -59,7 +59,7 @@ public class FrontEndRenaultDealerPriceRule
 		logger1.log(LogStatus.INFO, logger1
 				.addScreenCapture(Helper.captureScreenshot(driver, "Price Rule is not applied for other vehciles")));
 		Assert.assertFalse(false, Withouprice.getText());
-		logger1.log(LogStatus.FAIL, "Price rule value is not captured for other vehicles");
+		logger1.log(LogStatus.PASS, "Price rule value is not captured for other vehicles");
 	}
 
 	@Test(priority = 9)

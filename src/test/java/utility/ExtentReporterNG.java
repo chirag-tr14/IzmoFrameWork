@@ -9,7 +9,7 @@ public  class ExtentReporterNG{
 	ExtentTest logger;
 	
 	public static ExtentReports getInstance(){
-		report = new ExtentReports(".\\Reports\\PriceRuleAdd.html", true);
+		report = new ExtentReports(".\\Reports\\PriceRuleAdd.html", false);
 		
 		return report;
 	

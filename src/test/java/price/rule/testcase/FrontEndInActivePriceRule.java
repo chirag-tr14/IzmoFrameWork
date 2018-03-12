@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
@@ -16,31 +15,30 @@ import com.relevantcodes.extentreports.LogStatus;
 import factory.BrowserFactory;
 import factory.DataproviderFactory;
 import price.rule.front.sc.InventoryForm;
+import utility.ExtentReporterNG;
 import utility.Helper;
 
 public class FrontEndInActivePriceRule {
 
-	
 	WebDriver driver;
 	ExtentReports report1;
 	ExtentTest logger1;
-	
+
 	@BeforeClass
 	public void frontendReports() {
-		report1 = new ExtentReports(".\\Reports\\InactivePriceRule.html", true);
-		//report=ExtentReporterNG.getInstance();
+		report1 = ExtentReporterNG.getInstance();
+
 	}
 
 	@Test(priority = 16)
 	public void expiredPriceRule() {
-		
-		logger1 = report1.startTest("This page Verifies Fron end  Renault Dealer Price Rule");
+
+		logger1 = report1.startTest("Expired Price Rule");
 		driver = BrowserFactory.getBrowser("chrome");
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
 		driver.manage().deleteAllCookies();
 		driver.get(DataproviderFactory.getExcel().getData("Sheet4", 6, 0));
 		logger1.log(LogStatus.INFO, "Opening Front End URL");
-		logger1 = report1.startTest("Expired Price Rule");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
 		form.citroenpriceRuleValue();
 		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
@@ -48,11 +46,11 @@ public class FrontEndInActivePriceRule {
 		logger1.log(LogStatus.INFO, logger1
 				.addScreenCapture(Helper.captureScreenshot(driver, " Expired Price value not Captured Front End")));
 		logger1.log(LogStatus.PASS, "Expired price Rule Value Should not Capture for  respective  vehicles");
-	
+
 	}
-	
-	@Test(priority=17)
-	public void inActivePriceRule(){
+
+	@Test(priority = 17)
+	public void inActivePriceRule() {
 		logger1 = report1.startTest("Inactive Price rule for Renault Dealer ");
 		driver = BrowserFactory.getBrowser("chrome");
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
@@ -64,19 +62,18 @@ public class FrontEndInActivePriceRule {
 		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
 		logger1.log(LogStatus.INFO, "Calling priceRuleMethod");
 		logger1.log(LogStatus.INFO, logger1
-			.addScreenCapture(Helper.captureScreenshot(driver, "InActive Price Value not Captured in Front End")));
+				.addScreenCapture(Helper.captureScreenshot(driver, "InActive Price Value not Captured in Front End")));
 		logger1.log(LogStatus.PASS, "InActive price Rule Value Not Capture for  respective  vehicles");
 	}
-	
-	@Test(priority=18)
-	
-	public void deletedPriceRule(){
+
+	@Test(priority = 18)
+
+	public void deletedPriceRule() {
 		logger1 = report1.startTest("Deleted Price Rule for Citroen Dealer");
 		driver = BrowserFactory.getBrowser("chrome");
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
 		driver.manage().deleteAllCookies();
 		driver.get(DataproviderFactory.getExcel().getData("Sheet4", 6, 0));
-		logger1 = report1.startTest("Not applying Price Rule Value");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
 		form.citroenpriceRuleValue();
 		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
@@ -84,9 +81,23 @@ public class FrontEndInActivePriceRule {
 				.addScreenCapture(Helper.captureScreenshot(driver, "Deleted Price Value not Captured in Front End")));
 		logger1.log(LogStatus.PASS, "Deleted price Rule Value Not Capture for  respective  vehicles");
 	}
+	@Test(priority = 19)
+	public void withoutIsPrimary(){
+		logger1 = report1.startTest("Adding Price rule Dealer for Without is primary Enabled");
+		driver = BrowserFactory.getBrowser("chrome");
+		logger1.log(LogStatus.INFO, "BrowserLaunch");
+		driver.manage().deleteAllCookies();
+		driver.get(DataproviderFactory.getExcel().getData("Sheet4", 7, 0));
+		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
+		form.withousIsPrimary();
+		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+		logger1.log(LogStatus.INFO, logger1
+				.addScreenCapture(Helper.captureScreenshot(driver, "Price Value not Captured in Front End")));
+		logger1.log(LogStatus.PASS, "price Rule Value Not Capture for  respective  vehicles");
+	}
 	
 	
-
+	
 	@AfterMethod
 	public void closeBrowser() {
 		logger1.log(LogStatus.INFO, "Closing Browsers");

@@ -117,10 +117,26 @@ public class ExpiredpriceRule {
 		  PriceruleDealer Invt = PageFactory.initElements(driver,PriceruleDealer.class);
 	     Invt.deletePriceRule();
 	     logger.log(LogStatus.INFO,
-					logger.addScreenCapture(Helper.captureScreenshot(driver, "Deleted Price is not apearing in Price List BackEnd")));
+		 logger.addScreenCapture(Helper.captureScreenshot(driver, "Deleted Price is not apearing in Price List BackEnd")));
 	    
 	 	  
 	 }
+	 
+
+	 
+	 @Test(priority=16)
+	 public void withouisPrimary(){
+		 Login login = PageFactory.initElements(driver, Login.class);
+		 PriceruleDealer Invt = PageFactory.initElements(driver,PriceruleDealer.class);
+		 login.selectDealer();
+		 login.searchDealerCitroen(DataproviderFactory.getExcel().getData("Sheet2", 4, 0));
+		 Invt.manageInventory();
+		 Invt.citroentDlrGreenDiscount();
+		 logger.log(LogStatus.INFO,
+		 logger.addScreenCapture(Helper.captureScreenshot(driver, "Adding PriceRule Dealer For Withous is Primary")));
+		 driver.get(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
+	 }
+	 
 	 
 	 @AfterClass
 		public void tearDown1() {

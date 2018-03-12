@@ -43,7 +43,6 @@ public class AddingpriceRuleDlr
 		logger = report.startTest("Login SC");
 		logger.log(LogStatus.INFO, "Application is up and running");
 		logger.log(LogStatus.INFO, "Welcome to site Admin");
-
 	}
 
 	// @Test(enabled=false)
@@ -59,7 +58,7 @@ public class AddingpriceRuleDlr
 		Invt.manageInventory();
 		Invt.renaultDlrTradeinDiscount();
 		logger.log(LogStatus.INFO,
-				logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFullyAdded Trade in Discount")));
+		logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFullyAdded Trade in Discount")));
 
 	}
 
@@ -116,6 +115,10 @@ public class AddingpriceRuleDlr
 		driver.navigate().to(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
 
 	}
+	
+	
+	
+	
 
 	// @Test(enabled=false)
 	@AfterClass

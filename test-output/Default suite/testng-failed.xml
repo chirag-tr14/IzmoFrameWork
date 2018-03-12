@@ -3,12 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="price.rule.testcase.ExpiredpriceRule">
+      <class name="price.rule.testcase.FrontEndInActivePriceRule">
         <methods>
-          <include name="deletePriceRule"/>
-          <include name="reports"/>
+          <include name="withoutIsPrimary"/>
+          <include name="frontendReports"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- price.rule.testcase.ExpiredpriceRule -->
+      </class> <!-- price.rule.testcase.FrontEndInActivePriceRule -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

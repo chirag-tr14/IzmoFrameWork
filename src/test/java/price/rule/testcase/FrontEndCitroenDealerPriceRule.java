@@ -37,7 +37,7 @@ public class FrontEndCitroenDealerPriceRule {
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
 		driver.manage().deleteAllCookies();
 		driver.get(DataproviderFactory.getExcel().getData("Sheet4", 6, 0));
-		logger1.log(LogStatus.INFO, "Opening Front End URL");
+		logger1.log(LogStatus.INFO, "Navigate to Citroen Dealer New Inventory Page");
 
 	}
 
