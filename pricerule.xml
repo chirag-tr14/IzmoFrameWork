@@ -3,10 +3,12 @@
 <suite name="PriceRule">
   <test name="AddPriceRule">
     <classes>
-    <class name="price.rule.testcase.AddingpriceRuleDlrWithReport"/>
+     <class name="price.rule.testcase.AddingpriceRuleDlr"/>
      <class name="price.rule.testcase.FrontEndCitroenDealerPriceRule"/>
      <class name="price.rule.testcase.FrontEndRenaultDealerPriceRule"/>
-      
+     <class name="price.rule.testcase.ExpiredpriceRule"/>
+     <class name="price.rule.testcase.FrontEndInActivePriceRule"/>
+     
     </classes>
   </test> <!-- AddPriceRule -->
 </suite> <!-- PriceRule -->

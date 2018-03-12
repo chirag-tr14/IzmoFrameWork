@@ -3,14 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [PriceRule]">
   <test thread-count="5" name="AddPriceRule(failed)">
     <classes>
-      <class name="price.rule.testcase.FrontEndCitroenDealerPriceRule">
+      <class name="price.rule.testcase.FrontEndInActivePriceRule">
         <methods>
-          <include name="closeBrowser"/>
-          <include name="citroenpriceRuleDlr"/>
-          <include name="withPriceRule"/>
+          <include name="expiredPriceRule"/>
+          <include name="inActivePriceRule"/>
           <include name="frontendReports"/>
+          <include name="closeBrowser"/>
+          <include name="invtUrl"/>
         </methods>
-      </class> <!-- price.rule.testcase.FrontEndCitroenDealerPriceRule -->
+      </class> <!-- price.rule.testcase.FrontEndInActivePriceRule -->
     </classes>
   </test> <!-- AddPriceRule(failed) -->
 </suite> <!-- Failed suite [PriceRule] -->
