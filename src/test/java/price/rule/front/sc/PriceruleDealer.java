@@ -162,10 +162,13 @@ public class PriceruleDealer
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		priceRule.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//a[contains(@href,'javascript:confirmDelete'+'(ID)']//img[@title='Delete']")).click();
+		driver.findElement(By.xpath("//a[contains(@href,'javascript:confirmDelete("+(ID)+")')]//img[@title='Delete']")).click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		Alert alert = driver.switchTo().alert();
 		alert.accept();
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+				
+		
 	}
 
 	public void renaultDlrTradeinDiscount() {

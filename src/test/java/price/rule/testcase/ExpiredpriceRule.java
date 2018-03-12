@@ -1,9 +1,11 @@
 package price.rule.testcase;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.database.Database;
@@ -15,6 +17,7 @@ import factory.DataproviderFactory;
 import price.rule.front.sc.Login;
 import price.rule.front.sc.PriceruleDealer;
 import utility.ExtentReporterNG;
+import utility.Helper;
 
 public class ExpiredpriceRule {
 	WebDriver driver;
@@ -29,15 +32,14 @@ public class ExpiredpriceRule {
 			//	new ExtentReports(".\\Reports\\BackendPriceRuleInActive.html", true);
 	}
 
-	//@Test(priority = 12)
-	@Test(priority=1)
-	public void loginSc() {
+	@Test(priority = 12)
+		public void loginSc() {
 		driver = BrowserFactory.getBrowser("chrome");
 		driver.manage().deleteAllCookies();
 		driver.get(DataproviderFactory.getConfig().applicationUrl());
 		Login login = PageFactory.initElements(driver, Login.class);
 		login.loginApplication(DataproviderFactory.getExcel().getData("Sheet1", 1, 0),
-				DataproviderFactory.getExcel().getData("Sheet1", 1, 1));
+		DataproviderFactory.getExcel().getData("Sheet1", 1, 1));
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		logger = report.startTest("Login SC");
 		logger.log(LogStatus.INFO, "Application is up and running");
@@ -45,7 +47,7 @@ public class ExpiredpriceRule {
 
 	}
 
-	/*@Test(priority = 13)
+	@Test(priority = 13)
 	public void expiredDatePriceRule() throws ClassNotFoundException, SQLException {
 		logger = report.startTest("Expired PriceRule");
  
@@ -69,8 +71,9 @@ public class ExpiredpriceRule {
 		driver.get(ScUrl + PriceRuleURl + ID);
 		Invt.expiredPriceRule();
 		logger.log(LogStatus.INFO,
-				logger.addScreenCapture(Helper.captureScreenshot(driver, "Expire Tab  Price Rule List ")));
+				logger.addScreenCapture(Helper.captureScreenshot(driver, "Expire Tab  Price Rule List BackEnd ")));
 		driver.get(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
+		
 	}
 
 	@Test(priority = 14)
@@ -97,38 +100,29 @@ public class ExpiredpriceRule {
 
 		Invt.inactivePriceRule();
 		logger.log(LogStatus.INFO,
-				logger.addScreenCapture(Helper.captureScreenshot(driver, "Inactive Tab  Price Rule List ")));
+				logger.addScreenCapture(Helper.captureScreenshot(driver, "Inactive Tab  Price Rule List BackEnd ")));
 
 		driver.get(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
 	}
-*/
+
 
 	
 	
-	 @Test(priority = 2)
-	 public void deletePriceRule() throws SQLException, ClassNotFoundException {
-		 /*String Query = "select *from inventory_price_rules  where level='DLR' and fk_dealer_id=102878 "
-		 		+ " and  discount_by='FLAT'  and status='ACTV'; ";
-			ResultSet data = databse.getData(Query);
-			boolean firstData = data.next();
-			 String ID = "";
-			if (firstData) {
-				ID = data.getString(1);
-				System.out.println(ID);
-			}*/
+	 @Test(priority =15)
+	 public void deletePriceRule() throws ClassNotFoundException, SQLException {
+		 
 		 Login login = PageFactory.initElements(driver, Login.class);
 		 login.selectDealer();
 		 login.searchDealerCitroen(DataproviderFactory.getExcel().getData("Sheet2", 3, 0));
 		  PriceruleDealer Invt = PageFactory.initElements(driver,PriceruleDealer.class);
-	    Invt.deletePriceRule();
-	  	
-	  //.findElement(By.xpath("//a[contains(@href,'javascript:confirmDelete')+'(ID)']//img[@title='Delete']"));
-	  //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    
-			  
+	     Invt.deletePriceRule();
+	     logger.log(LogStatus.INFO,
+					logger.addScreenCapture(Helper.captureScreenshot(driver, "Deleted Price is not apearing in Price List BackEnd")));
+	    
+	 	  
 	 }
 	 
-	/* @AfterClass
+	 @AfterClass
 		public void tearDown1() {
 			Login login = PageFactory.initElements(driver, Login.class);
 			login.logOut();
@@ -138,5 +132,5 @@ public class ExpiredpriceRule {
 			report.endTest(logger);
 			report.flush();
 		}
-		*/
+		
 }

@@ -36,12 +36,10 @@ public class forms
 	@FindBy(css="#pageType6") WebElement PrivacyPage;
 	
 	@FindBy(css="#pageType8") WebElement RssPage;
-	
-	
+		
 	@FindBy(css="input[id*='pageTitle'][name^='pageTitle']") WebElement Title;
 	
 	@FindBy(css="input[id^='pageUrl'][name*='pageUrl']") WebElement Url;
-	
 	
 	@FindBy(css="select[id*='pageDepartments'][name^='pageDepartments']") WebElement Deaprtments;
 	
@@ -55,8 +53,8 @@ public class forms
 	
 		public void contentPage(){
 	
-			AboutusPage.click();
-			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			    AboutusPage.click();
+			    driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 				Title.sendKeys(DataproviderFactory.getExcel().getData("Sheet1", 1, 1));
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 				Url.sendKeys(DataproviderFactory.getExcel().getData("Sheet1", 1, 2));

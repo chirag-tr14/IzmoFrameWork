@@ -94,7 +94,7 @@ public class AddingpriceRuleDlr
 		logger.log(LogStatus.INFO, "Calling AddPrice Rule Methodr");
 		Invt.citroentDlrOemDiscount();
 		logger.log(LogStatus.INFO,
-				logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFullyAdded Oem Discount")));
+		logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFullyAdded Oem Discount")));
 
 	}
 
@@ -110,9 +110,10 @@ public class AddingpriceRuleDlr
 		logger.log(LogStatus.INFO, "Calling AddPrice Rule Methodr");
 		Invt.citroentDlrGreenDiscount();
 		logger.log(LogStatus.INFO,
-				logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFully Added Green Discount")));
+		logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFully Added Green Discount")));
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		driver.get(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
+			
+		driver.navigate().to(DataproviderFactory.getExcel().getData("Sheet5", 1, 0));
 
 	}
 
