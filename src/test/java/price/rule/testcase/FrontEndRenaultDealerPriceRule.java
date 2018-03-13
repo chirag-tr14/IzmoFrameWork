@@ -37,72 +37,68 @@ public class FrontEndRenaultDealerPriceRule
 
 	@Test(priority = 7)
 	public void renualtdealerinvtUrl() {
-
 		logger1 = report1.startTest("Navigate to Renault Dealer New Inventory Page");
 		driver = BrowserFactory.getBrowser("chrome");
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
 		driver.manage().deleteAllCookies();
 		driver.get(DataproviderFactory.getExcel().getData("Sheet4", 1, 0));
-		logger1.log(LogStatus.INFO, "Opening Front End URL");
+		logger1.log(LogStatus.INFO, "Navigate to Renault Dealer New Inventory Page");
+		logger1.log(LogStatus.INFO, logger1
+				.addScreenCapture(Helper.captureScreenshot(driver, "Renault Dealer New Inventory Page")));
 
 	}
 
 	@Test(priority = 8)
 	// Without Price Rule Vehicle
 	public void renaultwithOutPriceRule() {
-
-		logger1 = report1.startTest("Price Rule Value is not applied for other vehciles");
+		logger1 = report1.startTest("Tradein Discount Not Applied Vehicles");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
 		form.otherValue();
 		WebElement Withouprice = driver
 				.findElement(By.xpath("//ul[@class='dropdown-menu discountedprice-dropdown']//li[1]"));
 		logger1.log(LogStatus.INFO, logger1
-				.addScreenCapture(Helper.captureScreenshot(driver, "Price Rule is not applied for other vehciles")));
+				.addScreenCapture(Helper.captureScreenshot(driver, "Tradein Discount is not applied Vehicle ")));
 		Assert.assertFalse(false, Withouprice.getText());
-		logger1.log(LogStatus.PASS, "Price rule value is not captured for other vehicles");
+		logger1.log(LogStatus.PASS, "Tradein Discount is not captured for other Dealerid but Same Provider");
 	}
 
 	@Test(priority = 9)
 	public void withPriceRule() {
 
-		logger1 = report1.startTest("Price Rule Value is not applied  vehciles");
+		logger1 = report1.startTest("Tradein Discount Applied Vehicles");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
 		form.priceRuleValue();
 		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
 		logger1.log(LogStatus.INFO, "Calling priceRuleMethod");
-
 		// WebElement price =
 		// driver.findElement(By.xpath("//ul[@class='dropdown-menu
 		// discountedprice-dropdown']//li[1]"));
 		// Assert.assertFalse(pass, );
 		logger1.log(LogStatus.INFO, logger1
-				.addScreenCapture(Helper.captureScreenshot(driver, "Price Rule Value  applied vehciles")));
-		logger1.log(LogStatus.PASS, "Price rule value is  captured for respective  vehicles");
+				.addScreenCapture(Helper.captureScreenshot(driver, "Tradein Discount is applied  vehicles")));
+		logger1.log(LogStatus.PASS, "Tradein Discount is applied for same provider and same dealerid vehicles");
 
 	}
 
 	@Test(priority = 10)
 	public void MakePriceRule() {
-
-		logger1 = report1.startTest("Price Rule is applied for Particular Make");
+		logger1 = report1.startTest("Override Dealer Discount Applied Vehicle");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
-
 		form.MakepriceRuleValue();
 		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
 		logger1.log(LogStatus.INFO, "Calling priceRuleMethod");
 		// WebElement price =
 		// driver.findElement(By.xpath("//ul[@class='dropdown-menu
 		// discountedprice-dropdown']//li[1]"));
-
 		logger1.log(LogStatus.INFO, logger1
-				.addScreenCapture(Helper.captureScreenshot(driver, "Price Rule is applied for Particular Make Model")));
-		logger1.log(LogStatus.PASS, "Price rule value is  captured for respective Make,Model,Trim vehicles");
+				.addScreenCapture(Helper.captureScreenshot(driver, "Override Dealer Discount for  Paricular Make,Model")));
+		logger1.log(LogStatus.PASS, "Replacing Old Dealer Discount value and applied Price Rule for paricular Make");
 
 	}
 
 	@Test(priority = 11)
 	public void otherMakePriceRule() {
-		logger1 = report1.startTest("Price Rule Is not applied for other makes");
+		logger1 = report1.startTest("Override Dealer Discount Not Applied Vehicle");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
 		form.otherMakepriceRuleValue();
 		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
@@ -110,10 +106,9 @@ public class FrontEndRenaultDealerPriceRule
 		// WebElement price =
 		// driver.findElement(By.xpath("//ul[@class='dropdown-menu
 		// discountedprice-dropdown']//li[1]"));
-
 		logger1.log(LogStatus.INFO, logger1
-				.addScreenCapture(Helper.captureScreenshot(driver, "Price Rule Is not applied for other make Model")));
-		logger1.log(LogStatus.PASS, "Price rule value is  not captured for other Make,Model,Trim  vehicles");
+				.addScreenCapture(Helper.captureScreenshot(driver, "Not Override Dealer Discount for Other Make,Model")));
+		logger1.log(LogStatus.PASS, "Not Replacing Old Dealer Discount value and  Not applied Price Rule for paricular Make");
 
 	}
 

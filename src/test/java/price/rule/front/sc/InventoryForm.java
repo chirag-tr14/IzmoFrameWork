@@ -78,11 +78,20 @@ public class InventoryForm {
 		PrDropdown.click();
 
 	}
+	public void citroenExpiredpriceRuleValue() {
+
+		SearchField.sendKeys(DataproviderFactory.getExcel().getData("Sheet4", 6, 1));
+
+		SubmitButton.click();
+
+		//PrDropdown.click();
+
+	}
 	
 	public void inactivepriceRuleValue() {
 		SearchField.sendKeys(DataproviderFactory.getExcel().getData("Sheet4", 1, 1));
 
-		SubmitButton.click();
+	   SubmitButton.click();
 
 		PrDropdown.click();
 

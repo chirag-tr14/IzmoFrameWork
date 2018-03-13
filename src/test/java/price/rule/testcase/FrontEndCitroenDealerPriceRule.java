@@ -37,13 +37,15 @@ public class FrontEndCitroenDealerPriceRule {
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
 		driver.manage().deleteAllCookies();
 		driver.get(DataproviderFactory.getExcel().getData("Sheet4", 6, 0));
-		logger1.log(LogStatus.INFO, "Navigate to Citroen Dealer New Inventory Page");
+		logger1.log(LogStatus.INFO, "Navigate to Citroen Dlr New Inventory Page");
+		logger1.log(LogStatus.INFO, logger1
+				.addScreenCapture(Helper.captureScreenshot(driver, "Citroen Dealer New Inventory Page")));
 
 	}
 
 	@Test(priority=6)
 	public void withPriceRule() {
-		logger1 = report1.startTest("Price Rule is applied for Citroen Dealer");
+		logger1 = report1.startTest("Applied OEM and Green Discount");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
 
 		form.citroenpriceRuleValue();
@@ -56,9 +58,9 @@ public class FrontEndCitroenDealerPriceRule {
 		// Assert.assertFalse(pass, );
 
 		logger1.log(LogStatus.INFO, logger1
-				.addScreenCapture(Helper.captureScreenshot(driver, "Sucessfully Captured Price Value in Front End")));
-		logger1.log(LogStatus.PASS, "Price rule value is  captured for respective  vehicles");
-
+				.addScreenCapture(Helper.captureScreenshot(driver, "Oem and Green Discount Values Applied for Citroen Make")));
+		logger1.log(LogStatus.PASS, "OEM and Green Discount Values Applied for Citroen Make");
+		
 	}
 
 	@AfterMethod

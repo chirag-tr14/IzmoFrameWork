@@ -111,11 +111,11 @@ public class PriceruleDealer
 	public void manageInventory() {
 
 		ivntMgmt.click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		priceRule.click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		RuleButton.click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	public void expiredPriceRule() {
@@ -127,7 +127,6 @@ public class PriceruleDealer
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		PrevMonth.click();
 		SelecDate.click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Select status = new Select(Status);
 		status.getFirstSelectedOption();
@@ -141,7 +140,6 @@ public class PriceruleDealer
 		Select status = new Select(Status);
 		status.selectByValue("ICTV");
 		UpdateButton.click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		InExTab.click();
 
@@ -160,11 +158,11 @@ public class PriceruleDealer
 			}
 	
 		ivntMgmt.click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		priceRule.click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//a[contains(@href,'javascript:confirmDelete("+(ID)+")')]//img[@title='Delete']")).click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Alert alert = driver.switchTo().alert();
 		alert.accept();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -177,19 +175,19 @@ public class PriceruleDealer
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Select cat = new Select(PriceCategory);
 		cat.selectByVisibleText(DataproviderFactory.getExcel().getData("Sheet3", 1, 0));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Select type = new Select(VehicleType);
 		type.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 1, 1));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Select provider = new Select(Provider);
 
 		provider.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 1, 2));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		StartDate.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 1, 8));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		/*
 		 * JavascriptExecutor js = (JavascriptExecutor) driver;
 		 * js.executeScript(
@@ -212,9 +210,9 @@ public class PriceruleDealer
 		Select discount = new Select(Discount);
 		// discount.selectByValue("FLAT");
 		discount.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 1, 10));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Discountvalue.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 1, 11));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		UpdateButton.click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
@@ -224,25 +222,25 @@ public class PriceruleDealer
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Select cat = new Select(PriceCategory);
 		cat.selectByVisibleText(DataproviderFactory.getExcel().getData("Sheet3", 3, 0));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Select type = new Select(VehicleType);
 		type.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 3, 1));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Select provider = new Select(Provider);
 		provider.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 3, 2));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Make.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 3, 5));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Model.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 3, 6));
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Trim.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 3, 7));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		StartDate.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 3, 8));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		// EndDate.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 3,
 		// 9));
 
@@ -250,7 +248,7 @@ public class PriceruleDealer
 		discount.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 3, 10));
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Discountvalue.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 3, 11));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		CustomChekBox.click();
 
 		UpdateButton.click();
@@ -261,7 +259,7 @@ public class PriceruleDealer
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		Select cat = new Select(PriceCategory);
 		cat.selectByVisibleText(DataproviderFactory.getExcel().getData("Sheet3", 2, 0));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Select type = new Select(VehicleType);
 		type.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 2, 1));
@@ -269,18 +267,18 @@ public class PriceruleDealer
 
 		Select provider = new Select(Provider);
 		provider.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 2, 2));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Make.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 2, 5));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		StartDate.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 2, 8));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Select discount = new Select(Discount);
 		discount.selectByVisibleText(DataproviderFactory.getExcel().getData("Sheet3", 2, 10));
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Discountvalue.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 2, 11));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		UpdateButton.click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
@@ -293,21 +291,21 @@ public class PriceruleDealer
 
 		Select type = new Select(VehicleType);
 		type.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 4, 1));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Select provider = new Select(Provider);
 		provider.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 4, 2));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		StartDate.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 4, 8));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Select discount = new Select(Discount);
 		discount.selectByValue(DataproviderFactory.getExcel().getData("Sheet3", 4, 10));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		Discountvalue.sendKeys(DataproviderFactory.getExcel().getData("Sheet3", 4, 11));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		UpdateButton.click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

@@ -33,6 +33,7 @@ public class AddingpriceRuleDlr
 
 	@Test(priority = 1)
 	public void loginSc() {
+		logger = report.startTest("Login SC");
 		driver = BrowserFactory.getBrowser("chrome");
 		driver.manage().deleteAllCookies();
 		driver.get(DataproviderFactory.getConfig().applicationUrl());
@@ -40,9 +41,11 @@ public class AddingpriceRuleDlr
 		login.loginApplication(DataproviderFactory.getExcel().getData("Sheet1", 1, 0),
 				DataproviderFactory.getExcel().getData("Sheet1", 1, 1));
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		logger = report.startTest("Login SC");
-		logger.log(LogStatus.INFO, "Application is up and running");
+				logger.log(LogStatus.INFO, "Application is up and running");
 		logger.log(LogStatus.INFO, "Welcome to site Admin");
+		logger.log(LogStatus.INFO,
+				logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccessFully Login SC")));
+		
 	}
 
 	// @Test(enabled=false)
@@ -58,7 +61,7 @@ public class AddingpriceRuleDlr
 		Invt.manageInventory();
 		Invt.renaultDlrTradeinDiscount();
 		logger.log(LogStatus.INFO,
-		logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFullyAdded Trade in Discount")));
+		logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFully Added Trade in Discount")));
 
 	}
 
@@ -90,7 +93,7 @@ public class AddingpriceRuleDlr
 		logger.log(LogStatus.INFO, "Passed Dealer Name");
 		// Calling InventoryManager
 		Invt.manageInventory();
-		logger.log(LogStatus.INFO, "Calling AddPrice Rule Methodr");
+		logger.log(LogStatus.INFO, "Calling AddPrice Rule Method");
 		Invt.citroentDlrOemDiscount();
 		logger.log(LogStatus.INFO,
 		logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFullyAdded Oem Discount")));
@@ -106,7 +109,7 @@ public class AddingpriceRuleDlr
 		String priceUrl = driver.getTitle();
 		Assert.assertTrue(priceUrl.contains(priceUrl));
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		logger.log(LogStatus.INFO, "Calling AddPrice Rule Methodr");
+		logger.log(LogStatus.INFO, "Calling AddPrice Rule Method");
 		Invt.citroentDlrGreenDiscount();
 		logger.log(LogStatus.INFO,
 		logger.addScreenCapture(Helper.captureScreenshot(driver, "SuccesFully Added Green Discount")));
@@ -117,9 +120,6 @@ public class AddingpriceRuleDlr
 	}
 	
 	
-	
-	
-
 	// @Test(enabled=false)
 	@AfterClass
 	public void tearDown() {
@@ -132,21 +132,19 @@ public class AddingpriceRuleDlr
 		report.flush();
 
 	}
-
 }
-/*
- * * @Test public void tearDown(ITestResult result){
- * 
- * Login login=PageFactory.initElements(driver, Login.class);
- * if(result.getStatus()==ITestResult.FAILURE) { String path=
- * Helper.captureScreenshot(driver, result.getName());
- * 
- * logger.log(LogStatus.FAIL, logger.addScreenCapture(path)); }
- * 
- * login.logOut(); BrowserFactory.closeBrowser(driver); report.endTest(logger);
- * report.flush();
- * 
- * }
- * 
- * }
- */
+
+  /*@Test public void tearDown(ITestResult result){
+  
+  Login login=PageFactory.initElements(driver, Login.class);
+  if(result.getStatus()==ITestResult.FAILURE) { String path=
+  Helper.captureScreenshot(driver, result.getName());
+ 
+  logger.log(LogStatus.FAIL, logger.addScreenCapture(path)); }
+ 
+  login.logOut(); BrowserFactory.closeBrowser(driver); report.endTest(logger);
+ report.flush();
+ 
+ }*/
+ 
+ 

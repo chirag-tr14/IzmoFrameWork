@@ -40,7 +40,7 @@ public class FrontEndInActivePriceRule {
 		driver.get(DataproviderFactory.getExcel().getData("Sheet4", 6, 0));
 		logger1.log(LogStatus.INFO, "Opening Front End URL");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
-		form.citroenpriceRuleValue();
+		form.citroenExpiredpriceRuleValue();
 		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
 		logger1.log(LogStatus.INFO, "Calling priceRuleMethod");
 		logger1.log(LogStatus.INFO, logger1
@@ -59,8 +59,7 @@ public class FrontEndInActivePriceRule {
 		logger1 = report1.startTest("With  Price Rule Vehicle");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
 		form.inactivepriceRuleValue();
-		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
-		logger1.log(LogStatus.INFO, "Calling priceRuleMethod");
+				logger1.log(LogStatus.INFO, "Calling priceRuleMethod");
 		logger1.log(LogStatus.INFO, logger1
 				.addScreenCapture(Helper.captureScreenshot(driver, "InActive Price Value not Captured in Front End")));
 		logger1.log(LogStatus.PASS, "InActive price Rule Value Not Capture for  respective  vehicles");
@@ -83,7 +82,7 @@ public class FrontEndInActivePriceRule {
 	}
 	@Test(priority = 19)
 	public void withoutIsPrimary(){
-		logger1 = report1.startTest("Adding Price rule Dealer for Without is primary Enabled");
+		logger1 = report1.startTest("PriceRule is not applying Without isPrimary");
 		driver = BrowserFactory.getBrowser("chrome");
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
 		driver.manage().deleteAllCookies();
@@ -92,10 +91,9 @@ public class FrontEndInActivePriceRule {
 		form.withousIsPrimary();
 		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
 		logger1.log(LogStatus.INFO, logger1
-				.addScreenCapture(Helper.captureScreenshot(driver, "Price Value not Captured in Front End")));
-		logger1.log(LogStatus.PASS, "price Rule Value Not Capture for  respective  vehicles");
+				.addScreenCapture(Helper.captureScreenshot(driver, "Price Rule is not Applying without isPrimary")));
+		logger1.log(LogStatus.PASS, "Price Rule is not Applying without isPrimary");
 	}
-	
 	
 	
 	@AfterMethod
