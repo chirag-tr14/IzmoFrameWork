@@ -34,7 +34,7 @@ public class InventoryForm {
 		SubmitButton.click();
 
 		PrDropdown.click();
-		
+
 	}
 
 	public void otherValue() {
@@ -60,7 +60,7 @@ public class InventoryForm {
 	public void otherMakepriceRuleValue() {
 		SerchRemoveButton.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		
+
 		SearchField.sendKeys(DataproviderFactory.getExcel().getData("Sheet4", 4, 1));
 
 		SubmitButton.click();
@@ -75,35 +75,35 @@ public class InventoryForm {
 
 		SubmitButton.click();
 
-		PrDropdown.click();
+		//PrDropdown.click();
 
 	}
+
 	public void citroenExpiredpriceRuleValue() {
 
 		SearchField.sendKeys(DataproviderFactory.getExcel().getData("Sheet4", 6, 1));
 
 		SubmitButton.click();
 
-		//PrDropdown.click();
+		// PrDropdown.click();
 
 	}
-	
+
 	public void inactivepriceRuleValue() {
 		SearchField.sendKeys(DataproviderFactory.getExcel().getData("Sheet4", 1, 1));
 
-	   SubmitButton.click();
+		SubmitButton.click();
 
 		PrDropdown.click();
 
 	}
-	
-	public void withousIsPrimary()
-	{
+
+	public void withousIsPrimary() {
 		SearchField.sendKeys(DataproviderFactory.getExcel().getData("Sheet4", 7, 1));
 
 		SubmitButton.click();
 
-		//PrDropdown.click();
+		// PrDropdown.click();
 	}
 
 }

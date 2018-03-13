@@ -26,13 +26,13 @@ public class FrontEndCitroenDealerPriceRule {
 	@BeforeClass
 	public void frontendReports() {
 		report1 =ExtentReporterNG.getInstance();
-				//ExtentReports(".\\Reports\\FrontEndPriceRuleCitroen.html", true);
+						//report1 = new ExtentReports(".\\Reports\\CitroenDealerFrontEnd.html", true);
 			}
 
 	@BeforeMethod
 	public void citroenpriceRuleDlr() {
 
-		logger1 = report1.startTest("Navigate to Citroen Dealer New Inventory Page");
+		logger1 = report1.startTest("Navigate to Citroen Dlr New Inventory Page");
 		driver = BrowserFactory.getBrowser("chrome");
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
 		driver.manage().deleteAllCookies();

@@ -28,7 +28,8 @@ public class AddingpriceRuleDlr
 	@BeforeClass
 	public void reports() {
 		report =ExtentReporterNG.getInstance();
-				//ExtentReports(".\\Reports\\BackendPriceRuleAdd.html", true);
+		//report=	ExtentReports(".\\Reports\\BackendPriceRuleAdd.html", true);
+		//report = new ExtentReports(".\\Reports\\PriceRuleAdd.html", true);
 			}
 
 	@Test(priority = 1)

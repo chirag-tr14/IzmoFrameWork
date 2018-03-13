@@ -27,6 +27,7 @@ public class FrontEndInActivePriceRule {
 	@BeforeClass
 	public void frontendReports() {
 		report1 = ExtentReporterNG.getInstance();
+		//report1 = new ExtentReports(".\\Reports\\InActivePriceRule.html", true);
 
 	}
 
@@ -56,10 +57,9 @@ public class FrontEndInActivePriceRule {
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
 		driver.manage().deleteAllCookies();
 		driver.get(DataproviderFactory.getExcel().getData("Sheet4", 1, 0));
-		logger1 = report1.startTest("With  Price Rule Vehicle");
 		InventoryForm form = PageFactory.initElements(driver, InventoryForm.class);
 		form.inactivepriceRuleValue();
-				logger1.log(LogStatus.INFO, "Calling priceRuleMethod");
+		logger1.log(LogStatus.INFO, "Calling priceRuleMethod");
 		logger1.log(LogStatus.INFO, logger1
 				.addScreenCapture(Helper.captureScreenshot(driver, "InActive Price Value not Captured in Front End")));
 		logger1.log(LogStatus.PASS, "InActive price Rule Value Not Capture for  respective  vehicles");
@@ -80,8 +80,9 @@ public class FrontEndInActivePriceRule {
 				.addScreenCapture(Helper.captureScreenshot(driver, "Deleted Price Value not Captured in Front End")));
 		logger1.log(LogStatus.PASS, "Deleted price Rule Value Not Capture for  respective  vehicles");
 	}
+
 	@Test(priority = 19)
-	public void withoutIsPrimary(){
+	public void withoutIsPrimary() {
 		logger1 = report1.startTest("PriceRule is not applying Without isPrimary");
 		driver = BrowserFactory.getBrowser("chrome");
 		logger1.log(LogStatus.INFO, "BrowserLaunch");
@@ -94,8 +95,7 @@ public class FrontEndInActivePriceRule {
 				.addScreenCapture(Helper.captureScreenshot(driver, "Price Rule is not Applying without isPrimary")));
 		logger1.log(LogStatus.PASS, "Price Rule is not Applying without isPrimary");
 	}
-	
-	
+
 	@AfterMethod
 	public void closeBrowser() {
 		logger1.log(LogStatus.INFO, "Closing Browsers");

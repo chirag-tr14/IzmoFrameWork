@@ -8,8 +8,7 @@
      <class name="price.rule.testcase.FrontEndRenaultDealerPriceRule"/>
      <class name="price.rule.testcase.ExpiredpriceRule"/>
      <class name="price.rule.testcase.FrontEndInActivePriceRule"/>
-       
-     
+   
     </classes>
   </test> <!-- AddPriceRule -->
 </suite> <!-- PriceRule -->

@@ -47,7 +47,7 @@ public class ConfigDataProvider
 		return iepath;
 	}
 
-	//////////// Contactus Form
+	//Contactus Form
 
 	public String contactusFormUrl() {
 		String curl = prop.getProperty("curl");
